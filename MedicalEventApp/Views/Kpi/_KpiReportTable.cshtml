@@ -1,0 +1,81 @@
+@model MedicalEventApp.Services.KpiReport
+
+@functions {
+    public string ValueCss(bool isAbnormal) => isAbnormal ? "text-danger fw-bold" : string.Empty;
+}
+
+<div class="mb-4">
+    <div class="alert alert-secondary mb-0">
+        <strong>Current YM:</strong> @Model.Ym
+        <span class="mx-2">|</span>
+        <strong>Last YM:</strong> @Model.LastYm
+    </div>
+</div>
+
+<h4>OPD</h4>
+<div class="table-responsive mb-4">
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Indicator</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Current Total</td><td>@Model.Opd.CurrentTotal</td></tr>
+            <tr><td>Last Year Total</td><td>@Model.Opd.LastYearTotal</td></tr>
+            <tr><td>Total Growth Rate</td><td class="@ValueCss(Model.Opd.IsTotalGrowthAbnormal)">@Model.Opd.TotalGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>Current First Visit</td><td>@Model.Opd.CurrentFirst</td></tr>
+            <tr><td>Last Year First Visit</td><td>@Model.Opd.LastYearFirst</td></tr>
+            <tr><td>First Growth Rate</td><td class="@ValueCss(Model.Opd.IsFirstGrowthAbnormal)">@Model.Opd.FirstGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>First Visit Rate</td><td>@Model.Opd.FirstVisitRate.ToString("F2")%</td></tr>
+            <tr><td>Rate Growth Rate</td><td class="@ValueCss(Model.Opd.IsRateGrowthAbnormal)">@Model.Opd.RateGrowthRate.ToString("F2")%</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h4>Inpatient</h4>
+<div class="table-responsive mb-4">
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Indicator</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Current In Total</td><td>@Model.Inpatient.CurrentInTotal</td></tr>
+            <tr><td>Last In Total</td><td>@Model.Inpatient.LastInTotal</td></tr>
+            <tr><td>In Total Growth Rate</td><td class="@ValueCss(Model.Inpatient.IsInTotalGrowthAbnormal)">@Model.Inpatient.InTotalGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>Current BedDays</td><td>@Model.Inpatient.CurrentBeddays</td></tr>
+            <tr><td>Last BedDays</td><td>@Model.Inpatient.LastBeddays</td></tr>
+            <tr><td>BedDays Growth Rate</td><td class="@ValueCss(Model.Inpatient.IsBeddaysGrowthAbnormal)">@Model.Inpatient.BeddaysGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>ALOS</td><td>@Model.Inpatient.Alos.ToString("F2")</td></tr>
+            <tr><td>ALOS Growth Rate</td><td class="@ValueCss(Model.Inpatient.IsAlosGrowthAbnormal)">@Model.Inpatient.AlosGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>OccRate</td><td>@Model.Inpatient.OccRate.ToString("F2")%</td></tr>
+            <tr><td>OccRate Growth Rate</td><td class="@ValueCss(Model.Inpatient.IsOccrateGrowthAbnormal)">@Model.Inpatient.OccrateGrowthRate.ToString("F2")%</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<h4>ER</h4>
+<div class="table-responsive mb-2">
+    <table class="table table-striped table-bordered align-middle">
+        <thead class="table-light">
+            <tr>
+                <th>Indicator</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Current ER Total</td><td>@Model.Er.CurrentErTotal</td></tr>
+            <tr><td>Last ER Total</td><td>@Model.Er.LastErTotal</td></tr>
+            <tr><td>ER Total Growth Rate</td><td class="@ValueCss(Model.Er.IsErTotalGrowthAbnormal)">@Model.Er.ErTotalGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>Current Boarding</td><td>@Model.Er.CurrentBoarding</td></tr>
+            <tr><td>Last Boarding</td><td>@Model.Er.LastBoarding</td></tr>
+            <tr><td>Boardings Growth Rate</td><td class="@ValueCss(Model.Er.IsBoardingsGrowthAbnormal)">@Model.Er.BoardingsGrowthRate.ToString("F2")%</td></tr>
+            <tr><td>Admission Rate</td><td>@Model.Er.AdmissionRate.ToString("F2")%</td></tr>
+            <tr><td>Admission Rate Growth Rate</td><td class="@ValueCss(Model.Er.IsAdmissionRateGrowthAbnormal)">@Model.Er.AdmissionRateGrowthRate.ToString("F2")%</td></tr>
+        </tbody>
+    </table>
+</div>
