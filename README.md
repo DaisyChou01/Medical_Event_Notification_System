@@ -1,4 +1,4 @@
-# Feature: Medecal Event Notification System
+# Feature: Medical Event Notification System
 
 ## 1. Data Source
 
