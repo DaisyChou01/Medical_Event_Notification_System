@@ -1,4 +1,4 @@
-# Feature: 醫療品質指標異常通知系統
+# Feature: Medecal Event Notification System
 
 ## 1. Data Source
 
